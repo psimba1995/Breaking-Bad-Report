@@ -18,3 +18,45 @@ The show received critical acclaim for its writing, acting, and cinematography, 
 ## Logo
 
 ![Breaking Bad Logo](images/breaking_bad_logo.jpg)
+
+```{r}
+# Create the dataset and save it
+viewership <- data.frame(
+  Season = 1:5,
+  Average_Viewership_Millions = c(1.23, 1.33, 1.52, 1.91, 6.04)
+)
+
+# Save to CSV
+write.csv(viewership, "data/breaking_bad_viewership.csv", row.names = FALSE)
+
+```
+
+```{r}
+## Summary Statistics
+
+# Load necessary libraries
+library(knitr)
+
+# Read the data
+viewership <- read.csv("data/breaking_bad_viewership.csv")
+
+# Display the raw data as a table
+kable(viewership, caption = "Breaking Bad Average Viewership (in Millions)")
+
+# Show basic summary stats
+summary(viewership$Average_Viewership_Millions)
+
+```
+
+```{r}
+
+
+mean_viewers <- mean(viewership$Average_Viewership_Millions)
+min_viewers <- min(viewership$Average_Viewership_Millions)
+max_viewers <- max(viewership$Average_Viewership_Millions)
+
+cat("Mean Viewership:", round(mean_viewers, 2), "million\n")
+cat("Minimum Viewership:", round(min_viewers, 2), "million\n")
+cat("Maximum Viewership:", round(max_viewers, 2), "million\n")
+
+```
