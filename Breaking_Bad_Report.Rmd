@@ -1,11 +1,9 @@
-```{r}
----
+```{---}
 title: "Breaking Bad Viewership Analysis"
 author: "Paidamoyo Simba"
-date: "`r Sys.Date()`"
+date: "2025-05-24"
 output: html_document
-
-
+---
 
 ```
 
@@ -102,3 +100,15 @@ ggplot(viewership[-1, ], aes(x = factor(Season), y = Change_Millions)) +
   theme_minimal()
 
 ```
+
+## Interpretation of Viewership Trends
+
+The average viewership of *Breaking Bad* increased steadily across the first four seasons. Between Season 1 and Season 2, viewership increased by ***r round(viewership(viewrshio\$Change_Millions[2], 2)*** million viewers. The growth continued into Season 3 and Season 4, with increases of ***r round(viewership(viewrshio\$Change_Millions[3], 2)*** and ***r round(viewership(viewrshio\$Change_Millions[4], 2)*** million, respectively.
+
+The most significant jump occurred between Season 4 and Season 5, where viewership increased by ***r round(viewership(viewrshio\$Change_Millions[5], 2)*** **million**, reaching an all-time high of ***r round(viewership(viewrshio\$Change_Millions[5])*** **million viewers** on average.
+
+This surge may be attributed to growing critical acclaim and increased accessibility of earlier seasons via streaming platforms.
+
+## Conclusion
+
+This short analysis of *Breaking Bad* viewership data shows a steady increase in average viewers over its five-season run. The final season saw a major spike of over 4 million additional viewers compared to Season 4, likely due to increased critical acclaim and streaming availability of earlier seasons. Visualizations and statistics highlight the show's growing popularity and cultural impact.
