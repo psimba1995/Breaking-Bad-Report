@@ -20,13 +20,13 @@ The show received critical acclaim for its writing, acting, and cinematography, 
 ![Breaking Bad Logo](images/breaking_bad_logo.jpg)
 
 ```{r}
-# Create the dataset and save it
+# Creating the dataset and saving it
 viewership <- data.frame(
   Season = 1:5,
   Average_Viewership_Millions = c(1.23, 1.33, 1.52, 1.91, 6.04)
 )
 
-# Save to CSV
+# Saving to CSV
 write.csv(viewership, "data/breaking_bad_viewership.csv", row.names = FALSE)
 
 ```
@@ -34,13 +34,12 @@ write.csv(viewership, "data/breaking_bad_viewership.csv", row.names = FALSE)
 ```{r}
 ## Summary Statistics
 
-# Load necessary libraries
+
 library(knitr)
 
-# Read the data
+
 viewership <- read.csv("data/breaking_bad_viewership.csv")
 
-# Display the raw data as a table
 kable(viewership, caption = "Breaking Bad Average Viewership (in Millions)")
 
 # Show basic summary stats
@@ -64,10 +63,10 @@ cat("Maximum Viewership:", round(max_viewers, 2), "million\n")
 ```{r}
 ## Viewership Over Time
 
-# Load ggplot2 for plotting
+
 library(ggplot2)
 
-# Create the plot
+#  plot
 ggplot(viewership, aes(x = Season, y = Average_Viewership_Millions)) +
   geom_line(color = "darkgreen", size = 1.2) +
   geom_point(color = "blue", size = 3) +
@@ -75,6 +74,30 @@ ggplot(viewership, aes(x = Season, y = Average_Viewership_Millions)) +
     title = "Breaking Bad Viewership Over Time",
     x = "Season",
     y = "Average Viewership (Millions)"
+  ) +
+  theme_minimal()
+
+```
+
+```{r}
+## The Change in Viewership from Season to Season
+
+# Calculating change from previous season
+viewership$Change_Millions <- c(NA, diff(viewership$Average_Viewership_Millions))
+
+# Showing the data
+knitr::kable(viewership, caption = "Viewership Change Between Seasons")
+
+```
+
+```{r}
+# Plotting the change
+ggplot(viewership[-1, ], aes(x = factor(Season), y = Change_Millions)) +
+  geom_col(fill = "orange") +
+  labs(
+    title = "Change in Average Viewership Between Seasons",
+    x = "Season",
+    y = "Change in Viewership (Millions)"
   ) +
   theme_minimal()
 
