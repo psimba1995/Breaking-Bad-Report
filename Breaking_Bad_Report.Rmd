@@ -60,3 +60,22 @@ cat("Minimum Viewership:", round(min_viewers, 2), "million\n")
 cat("Maximum Viewership:", round(max_viewers, 2), "million\n")
 
 ```
+
+```{r}
+## Viewership Over Time
+
+# Load ggplot2 for plotting
+library(ggplot2)
+
+# Create the plot
+ggplot(viewership, aes(x = Season, y = Average_Viewership_Millions)) +
+  geom_line(color = "darkgreen", size = 1.2) +
+  geom_point(color = "blue", size = 3) +
+  labs(
+    title = "Breaking Bad Viewership Over Time",
+    x = "Season",
+    y = "Average Viewership (Millions)"
+  ) +
+  theme_minimal()
+
+```
